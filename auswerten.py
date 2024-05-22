@@ -5,41 +5,29 @@ from read_pandas import make_plot
 import plotly.express as px
 import nbformat
 import plotly.graph_objects as go
+import streamlit as st
 
-#%%
+
 data = pd.read_csv("data/activities/activity.csv",delimiter=",")
 data.head()
 print(data.columns)
 print(data.shape)
 print(data.mean(numeric_only=True))
-
 print(data["PowerOriginal"].max())   
-  
-
+#%%
 data["Time"] = data.index
-#Printe die neue Spalte Time
-print(data["Time"])
+#print(data["Time"])
+df1 = data[["Time","PowerOriginal","HeartRate"]]
 
-print
-
-df = data[["Time","PowerOriginal","HeartRate"]]
-
-
-#Erstelle ein px.line mit x Time und y PowerOriginal und HeartRate
 def make_plot(df):
-
-    # Erstellte einen Line Plot, der ersten 2000 Werte mit der Zeit aus der x-Achse
-    df_subset = df.head(1803)
-    
-    # Erstelle eine Figur mit plotly.express
-    fig = px.line(df_subset, x="Time", y="PowerOriginal", title='Leistung und Herzfrequenz über die Zeit')
-
+    df_subset = df1.head(1803)
+    fig1 = px.line(df_subset, x="Time", y="PowerOriginal", title='Leistung und Herzfrequenz über die Zeit')
     # Füge die Herzfrequenz als zweite Linie hinzu
-    fig.add_scatter(x=df_subset["Time"], y=df_subset["HeartRate"], mode='lines', name='HeartRate')
+    fig1.add_scatter(x=df_subset["Time"], y=df_subset["HeartRate"], mode='lines', name='HeartRate')
 
-    return fig
+    return fig1
 
-make_plot(df)
+make_plot(df1)
 #%%
 # Teilen Sie die Aktivität in fünf Zonen mittels Herzfrequenz:
 # Zone 1: 50-60% der Maximalen Herzrate
@@ -48,10 +36,7 @@ make_plot(df)
 # Zone 4: 80-90% der maximalen Herzrate
 # Zone 5: 90-100% der maximalen Herzrate
 
-# Berechnen Sie die maximale Herzfrequenz
 df = pd.DataFrame(data)
-
-# Berechnen Sie die maximale Herzfrequenz
 max_heart_rate = df["HeartRate"].max(numeric_only=True)
 
 # Berechnen Sie die Herzfrequenz-Zonen
@@ -70,6 +55,27 @@ df["HeartRateZone"] = pd.cut(df["HeartRate"],
 # Drucken Sie die neue Spalte HeartRateZone
 print(df[["HeartRate", "HeartRateZone"]])
 
+#Zeigen Sie an, wie viel Zeit in welcher Zone verbracht wurde
+zone_time = df.groupby("HeartRateZone")["Time"].sum()
+print(zone_time)
+
+
+#Erstelle eine Funktion die durch den input der maximalen Herzfrequenz die Zone ausgibt
+
+def location(max_heart_rate):
+    number = float(max_heart_rate)
+    if number >= 93 and number <= zone_1[1]:
+        return "Zone 1"
+    elif number >= zone_2[0] and number < zone_2[1]:
+        return "Zone 2"
+    elif number >= zone_3[0] and number < zone_3[1]:
+        return "Zone 3"
+    elif number >= zone_4[0] and number < zone_4[1]:
+        return "Zone 4"
+    elif number >= zone_5[0] and number <= zone_5[1]:
+        return "Zone 5"
+    else:
+        return "Keine gültige Zone"
 
 
 
