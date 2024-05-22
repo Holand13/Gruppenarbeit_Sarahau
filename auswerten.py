@@ -7,13 +7,20 @@ import nbformat
 import plotly.graph_objects as go
 import streamlit as st
 
-
 data = pd.read_csv("data/activities/activity.csv",delimiter=",")
 data.head()
 print(data.columns)
 print(data.shape)
+
+
+mittel= data.mean(numeric_only=True)
+max= data["PowerOriginal"].max()
+
+
+'''
 print(data.mean(numeric_only=True))
-print(data["PowerOriginal"].max())   
+print(data["PowerOriginal"].max())  
+''' 
 #%%
 data["Time"] = data.index
 #print(data["Time"])
@@ -55,13 +62,7 @@ df["HeartRateZone"] = pd.cut(df["HeartRate"],
 # Drucken Sie die neue Spalte HeartRateZone
 print(df[["HeartRate", "HeartRateZone"]])
 
-#Zeigen Sie an, wie viel Zeit in welcher Zone verbracht wurde
-zone_time = df.groupby("HeartRateZone")["Time"].sum()
-print(zone_time)
-
-
 #Erstelle eine Funktion die durch den input der maximalen Herzfrequenz die Zone ausgibt
-
 def location(max_heart_rate):
     number = float(max_heart_rate)
     if number >= 93 and number <= zone_1[1]:
@@ -78,6 +79,9 @@ def location(max_heart_rate):
         return "Keine gültige Zone"
 
 
+#Zeigen Sie an, wie viel Zeit in welcher Zone verbracht wurde
+zone_time = df.groupby("HeartRateZone")["Time"].sum()
+print(zone_time)
 
 
 

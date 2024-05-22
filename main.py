@@ -19,6 +19,8 @@ with tab2:
 
 with tab3:
     st.header("Auswertung")
+    st.write("Die Mittelwerte betragen:", auswerten.mittel)
+    st.write("Die maximale Leistung beträgt:", auswerten.max)
     fig1 = auswerten.make_plot(auswerten.df1)
     st.plotly_chart(fig1)
 
