@@ -12,15 +12,9 @@ data.head()
 print(data.columns)
 print(data.shape)
 
-
 mittel= data.mean(numeric_only=True)
 max= data["PowerOriginal"].max()
 
-
-'''
-print(data.mean(numeric_only=True))
-print(data["PowerOriginal"].max())  
-''' 
 #%%
 data["Time"] = data.index
 #print(data["Time"])
@@ -43,8 +37,8 @@ make_plot(df1)
 # Zone 4: 80-90% der maximalen Herzrate
 # Zone 5: 90-100% der maximalen Herzrate
 
-df = pd.DataFrame(data)
-max_heart_rate = df["HeartRate"].max(numeric_only=True)
+df2 = pd.DataFrame(data)
+max_heart_rate = df2["HeartRate"].max(numeric_only=True)
 
 # Berechnen Sie die Herzfrequenz-Zonen
 zone_1 = [0.5 * max_heart_rate, 0.6 * max_heart_rate]
@@ -54,13 +48,13 @@ zone_4 = [0.8 * max_heart_rate, 0.9 * max_heart_rate]
 zone_5 = [0.9 * max_heart_rate, max_heart_rate]
 
 # Fügen Sie die Herzfrequenz-Zonen als neue Spalten hinzu
-df["HeartRateZone"] = pd.cut(df["HeartRate"],
+df2["HeartRateZone"] = pd.cut(df2["HeartRate"],
                              bins=[0, zone_1[1], zone_2[1], zone_3[1], zone_4[1], zone_5[1]],
                              labels=["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5"],
                              include_lowest=True)
 
 # Drucken Sie die neue Spalte HeartRateZone
-print(df[["HeartRate", "HeartRateZone"]])
+print(df2[["HeartRate", "HeartRateZone"]])
 
 #Erstelle eine Funktion die durch den input der maximalen Herzfrequenz die Zone ausgibt
 def location(max_heart_rate):
@@ -78,11 +72,11 @@ def location(max_heart_rate):
     else:
         return "Keine gültige Zone"
 
-
+#%%
 #Zeigen Sie an, wie viel Zeit in welcher Zone verbracht wurde
-zone_time = df.groupby("HeartRateZone")["Time"].sum()
-print(zone_time)
+def calculate_zone_time(df2):
+    zone_time = df2.groupby("HeartRateZone")["Time"].sum()
+    return zone_time
 
-
-
+calculate_zone_time(df2)
 # %%

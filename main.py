@@ -26,3 +26,5 @@ with tab3:
 
     max_heart_rate = st.number_input("Gib die maximale Herzfrequenz ein, um zu wissen in welcher Zone Sie sich befinden:")
     st.write("Sie befinden sich in Zone:", auswerten.location(float(max_heart_rate)))
+
+    st.write("In den jeweiligen Zonen wurden folgende Zeiten verbracht:", auswerten.df2.groupby("HeartRateZone")["Time"].sum())
