@@ -84,7 +84,7 @@ def location(max_heart_rate):
 #Zeigen Sie an, wie viel Zeit in welcher Zone verbracht wurde
 def calculate_zone_time(df2):
 
-    zone_time = df2.groupby("HeartRateZone")["Time"].sum()
+    zone_time = df2.groupby("HeartRateZone")["Time"].sum().reset_index()
 
     return zone_time
 
@@ -93,7 +93,7 @@ calculate_zone_time(df2)
 #Zeigen Sie die durchschnittliche Leistung in den Zonen an
 def calculate_zone_power(df2):
 
-    zone_power = df2.groupby("HeartRateZone")["PowerOriginal"].mean()
+    zone_power = df2.groupby("HeartRateZone")["PowerOriginal"].mean().reset_index()
 
     return zone_power
 calculate_zone_power(df2)
