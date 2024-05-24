@@ -90,4 +90,13 @@ def calculate_zone_time(df2):
 
 calculate_zone_time(df2)
 # %%
+#Zeigen Sie die durchschnittliche Leistung in den Zonen an
+def calculate_zone_power(df2):
 
+    zone_power = df2.groupby("HeartRateZone")["PowerOriginal"].mean()
+
+    return zone_power
+calculate_zone_power(df2)
+
+
+# %%

@@ -28,3 +28,4 @@ with tab3:
     st.write("Sie befinden sich in Zone:", auswerten.location(float(max_heart_rate)))
 
     st.write("In den jeweiligen Zonen wurden folgende Zeiten verbracht:", auswerten.df2.groupby("HeartRateZone")["Time"].sum())
+    st.write("Die durchschnittliche Leistung in den Zonen beträgt:", auswerten.calculate_zone_power(auswerten.df2))
