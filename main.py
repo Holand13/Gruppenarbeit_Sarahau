@@ -52,6 +52,7 @@ with tab3:
         return zone_ranges
 
     
+    #Herzfrequenz-Zonenrechner basierend auf der eingegebenen maximalen Herzfrequenz
     st.header("Herzfrequenz-Zonenrechner basierend auf der eingegebenen maximalen Herzfrequenz")
 
     max_hr = st.number_input("Geben Sie die maximale Herzfrequenz ein:", min_value=1, value=180)

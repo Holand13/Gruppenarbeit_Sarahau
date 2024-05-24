@@ -17,7 +17,6 @@ mittel= data["PowerOriginal"].mean()
 
 #%%
 data["Time"] = data.index
-#print(data["Time"])
 df1 = data[["Time","PowerOriginal","HeartRate"]]
 
 def make_plot(df):
@@ -97,6 +96,3 @@ def calculate_zone_power(df2):
 
     return zone_power
 calculate_zone_power(df2)
-
-
-# %%
