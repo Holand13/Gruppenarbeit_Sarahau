@@ -21,5 +21,5 @@ Die Streamlit-App bietet folgende Funktionen:
 - Die Herzfrequenz-Zonen werden dynamisch berechnet, basierend auf der vom Benutzer eingegebenen maximalen Herzfrequenz.
 
 # Screenshots
-![Screenshot 1 der APP](C:\Users\hausa\Documents\Programmierübung\3_pandas-main\Gruppenarbeit_Sarahau\screenshot1.png)
-![Screenshot 2 der APP](C:\Users\hausa\Documents\Programmierübung\3_pandas-main\Gruppenarbeit_Sarahau\screenshot2.png)
+![Screenshot 1 der APP](screenshot1.png)
+![Screenshot 2 der APP](screenshot2.png)
