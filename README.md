@@ -5,8 +5,8 @@ Dieses Repository enthält eine Streamlit-App zur Analyse von Leistungstestdaten
 1. Stellen Sie sicher, dass Sie Python und Streamlit installiert haben.
 2. Klone dieses Repository auf Ihren lokalen Rechner.
 3. Navigieren Sie in Ihrem Terminal zum Verzeichnis der heruntergeladenen Dateien.
-4. Installieren Sie die erforderlichen Bibliotheken aus der requirements.txt-Datei, indem Sie pip install -r requirements.txt ausführen.
-5. Starten Sie die Streamlit-App, indem Sie streamlit run main.py ausführen.
+4. Installieren Sie die erforderlichen Bibliotheken aus der `requirements.txt`-Datei, indem Sie pip install `-r requirements.txt` ausführen.
+5. Starten Sie die Streamlit-App, indem Sie `streamlit run main.py` ausführen.
 6. Öffnen Sie den angezeigten Link in Ihrem Browser, um die App zu verwenden.
 
 # Funktionalitäten
