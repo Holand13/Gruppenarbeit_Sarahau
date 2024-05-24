@@ -20,3 +20,6 @@ Die Streamlit-App bietet folgende Funktionen:
 - Die Analysefunktionen sind in der Datei auswerten.py implementiert und werden von der Hauptdatei main.py verwendet.
 - Die Herzfrequenz-Zonen werden dynamisch berechnet, basierend auf der vom Benutzer eingegebenen maximalen Herzfrequenz.
 
+# Screenshots
+![Screenshot 1 der APP](C:\Users\hausa\Documents\Programmierübung\3_pandas-main\Gruppenarbeit_Sarahau\screenshot1.png)
+![Screenshot 2 der APP](C:\Users\hausa\Documents\Programmierübung\3_pandas-main\Gruppenarbeit_Sarahau\screenshot2.png)
