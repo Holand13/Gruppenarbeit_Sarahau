@@ -39,5 +39,7 @@ with tab3:
 
     #st.write("In den jeweiligen Zonen wurden folgende Zeiten verbracht:", auswerten.calculate_zone_time(auswerten.df2))
     #st.write("Die durchschnittliche Leistung in den Zonen beträgt:", auswerten.calculate_zone_power(auswerten.df2))
+    st.write("In folgenden Zonen wurden die Zeiten verbracht:")
     st.dataframe(data=auswerten.calculate_zone_time(auswerten.df2))
+    st.write("Die durchschnittliche Leistung in den Zonen beträgt:")
     st.dataframe(data=auswerten.calculate_zone_power(auswerten.df2))
