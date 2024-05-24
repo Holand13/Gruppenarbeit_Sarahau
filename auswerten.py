@@ -12,8 +12,8 @@ data.head()
 print(data.columns)
 print(data.shape)
 
-mittel= data.mean(numeric_only=True)
 max= data["PowerOriginal"].max()
+mittel= data["PowerOriginal"].mean()
 
 #%%
 data["Time"] = data.index
