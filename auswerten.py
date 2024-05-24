@@ -24,7 +24,15 @@ def make_plot(df):
     df_subset = df1.head(1803)
     fig1 = px.line(df_subset, x="Time", y="PowerOriginal", title='Leistung und Herzfrequenz über die Zeit')
     # Füge die Herzfrequenz als zweite Linie hinzu
-    fig1.add_scatter(x=df_subset["Time"], y=df_subset["HeartRate"], mode='lines', name='HeartRate')
+    fig1.add_scatter(x=df_subset["Time"], y=df_subset["HeartRate"], mode='lines', name='Herzfrequenz')
+
+    # Aktualisiere die y-Achsenbeschriftung
+    fig1.update_layout(yaxis_title='Messwerte')
+    fig1.update_layout(xaxis_title='Zeit / s')
+
+     # Aktualisiere den Namen der ersten Linie (PowerOriginal)
+    fig1.data[0].name = 'Leistung'
+    fig1.data[0].showlegend = True
 
     return fig1
 
@@ -75,8 +83,11 @@ def location(max_heart_rate):
 #%%
 #Zeigen Sie an, wie viel Zeit in welcher Zone verbracht wurde
 def calculate_zone_time(df2):
+
     zone_time = df2.groupby("HeartRateZone")["Time"].sum()
+
     return zone_time
 
 calculate_zone_time(df2)
 # %%
+
