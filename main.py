@@ -36,30 +36,10 @@ with tab3:
     st.write("Zone 5: 90-100% der maximalen Herzrate")
     st.write("")
 
+    max_heart_rate = st.number_input("Gib die maximale Herzfrequenz ein, um zu wissen in welcher Zone Sie sich befinden:")
+    st.write("Sie befinden sich in Zone:", auswerten.location(float(max_heart_rate)))
 
-    st.write("In den jeweiligen Zonen wurden folgende Zeiten verbracht:", auswerten.calculate_zone_time(auswerten.df2))
-    #st.dataframe(data=auswerten.calculate_zone_time(auswerten.df2))
-    st.write("Die durchschnittliche Leistung in den Zonen beträgt:", auswerten.calculate_zone_power(auswerten.df2))
-    #st.dataframe(data=auswerten.calculate_zone_power(auswerten.df2))
-
-
-    def calculate_zones(max_hr):
-        zone_ranges = {
-            "Zone 1": (0.5 * max_hr, 0.6 * max_hr),
-            "Zone 2": (0.6 * max_hr, 0.7 * max_hr),
-            "Zone 3": (0.7 * max_hr, 0.8 * max_hr),
-            "Zone 4": (0.8 * max_hr, 0.9 * max_hr),
-            "Zone 5": (0.9 * max_hr, max_hr)
-        }
-        return zone_ranges
-
-    
-    st.header("Herzfrequenz-Zonenrechner basierend auf der eingegebenen maximalen Herzfrequenz")
-
-    max_hr = st.number_input("Geben Sie die maximale Herzfrequenz ein:", min_value=1, value=180)
-    zone_ranges = calculate_zones(max_hr)
-
-    zones_df = pd.DataFrame.from_dict(zone_ranges, orient='index', columns=['Untere Grenze', 'Obere Grenze'])
-    
-    st.write("### Herzfrequenz-Zonen:")
-    st.dataframe(zones_df)
+    #st.write("In den jeweiligen Zonen wurden folgende Zeiten verbracht:", auswerten.calculate_zone_time(auswerten.df2))
+    #st.write("Die durchschnittliche Leistung in den Zonen beträgt:", auswerten.calculate_zone_power(auswerten.df2))
+    st.dataframe(data=auswerten.calculate_zone_time(auswerten.df2))
+    st.dataframe(data=auswerten.calculate_zone_power(auswerten.df2))
